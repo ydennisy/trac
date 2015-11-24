@@ -1,0 +1,12 @@
+{
+  "name": "trac",
+  "version": "0.0.1",
+  "description": "client side data collection",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Dennis Yurkevich",
+  "license": "ISC"
+}
