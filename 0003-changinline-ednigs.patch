@@ -1,0 +1,167 @@
+From da3ee3fd62eabfee5518d1a882b0f49bf8f4ecc8 Mon Sep 17 00:00:00 2001
+From: Dennis <dyurkevich@radiumone.com>
+Date: Wed, 2 Dec 2015 13:17:53 +0000
+Subject: [PATCH 3/3] changinline ednigs
+
+---
+ app/controllers/clickHandler.server.js | 40 +++++++++++++++++-----------------
+ app/routes/index.js                    | 20 ++++++++---------
+ public/index.html                      |  6 ++---
+ server.js                              |  6 ++---
+ 4 files changed, 36 insertions(+), 36 deletions(-)
+
+diff --git a/app/controllers/clickHandler.server.js b/app/controllers/clickHandler.server.js
+index d7b513d..9e852af 100644
+--- a/app/controllers/clickHandler.server.js
++++ b/app/controllers/clickHandler.server.js
+@@ -1,20 +1,20 @@
+-"use strict";
+-
+-function clickHandler (db) {
+-    
+-    var imps = db.collection("imps");
+-    
+-    // method to return the number of records in the collection "imps"
+-    this.getCount = function (req, res){
+-        imps.count({}, function(err, result){
+-            if (err) {
+-                throw err;
+-            }
+-            res.json(result);
+-        });
+-    };
+-
+-    
+-}
+-
+-module.exports = clickHandler;
++"use strict";
++
++function clickHandler (db) {
++
++    var imps = db.collection("imps");
++
++    // method to return the number of records in the collection "imps"
++    this.getCount = function (req, res){
++        imps.count({}, function(err, result){
++            if (err) {
++                throw err;
++            }
++            res.json(result);
++        });
++    };
++
++
++}
++
++module.exports = clickHandler;
+diff --git a/app/routes/index.js b/app/routes/index.js
+index c809d30..8db0605 100644
+--- a/app/routes/index.js
++++ b/app/routes/index.js
+@@ -3,40 +3,40 @@
+ var ClickHandler = require(process.cwd() + '/app/controllers/clickHandler.server.js');
+ 
+ module.exports = function (app, db) {
+-    
++
+     var qs = require("querystring");
+     var _ = require("underscore");
+-    
++
+     var clickHandler = new ClickHandler(db);
+-    
++
+     app.route("/")
+         .get(function(req, res){
+             res.sendFile(process.cwd() + "/public/index.html");
+         });
+-        
++
+     app.route("/script")
+         .get(function(req, res){
+             res.send("<script type='text/javascript' src='https://trac-ydennisy.c9users.io/script/trac.js'></script>");
+         });
+-    
++
+     app.route("/api")
+         .post(function(req, res){
+-            
++
+             var str = req.url.split("?")[1];
+             console.log(str);
+             var parsedQuery = qs.parse(str);
+             console.log("trying to parse...."+ parsedQuery.advid);
+-            
++
+             var dataToInsert = {};
+             _.extend(dataToInsert, req.body, str);
+-            
++
+             db.collection("imps").insert(dataToInsert, function (err){
+                 if (err) { throw err }
+             });
+             console.log(dataToInsert);
+             res.end();
+         })
+-        
++
+         .get(function(req, res){
+             console.log("getting data");
+             db.collection("imps").find({}).toArray(function(err, result){
+@@ -44,7 +44,7 @@ module.exports = function (app, db) {
+                 res.send(result);
+             });
+         });
+-        
++
+     app.route("/api/count")
+         .get(clickHandler.getCount);
+ };
+\ No newline at end of file
+diff --git a/public/index.html b/public/index.html
+index e35ece9..01ee9be 100644
+--- a/public/index.html
++++ b/public/index.html
+@@ -1,10 +1,10 @@
+ <!DOCTYPE html>
+ <html>
+    <head>
+-      <title>TRAC</title>
++      <title>TRAC UI</title>
+    </head>
+    <body>
+-       <h1>TRAC Script</h1>
+-    <script type="text/javascript" src="/client/trac.js"></script>
++      <h1>TRAC UI</h1>
++      <button type="submit">Get Data</button>
+    </body>
+ </html>
+\ No newline at end of file
+diff --git a/server.js b/server.js
+index 04b9eae..2b2a6ae 100644
+--- a/server.js
++++ b/server.js
+@@ -12,16 +12,16 @@ var app = express();
+ mongo.connect("mongodb://localhost:27017/trac", function (err, db){
+     if (err) {throw new Error("Connection to db failed"); }
+     else {console.log("mongoDB connected successfully on port 27017"); }
+-    
++
+     app.use(bodyParser.urlencoded());
+     app.use(bodyParser.json());
+     app.use("/public", express.static(process.cwd() + "/public"));
+     app.use("/client", express.static(process.cwd() + "/client"));
+     app.use("/script", express.static(process.cwd() + "/script"));
+     app.use(bodyParser.json());
+-    
++
+     route(app, db);
+-    
++
+     app.listen(8080, function(){
+         console.log("TRAC server listening on port 8080");
+     });
+-- 
+1.9.1
+
