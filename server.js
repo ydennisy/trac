@@ -15,7 +15,7 @@ mongo.connect("mongodb://localhost:27017/trac", function (err, db){
     else {console.log("mongoDB connected successfully on port 27017"); }
 
     app.use(bodyParser());
-    app.use("/public", express.static(process.cwd() + "/public"));
+    app.use("/public", express.static(__dirname + "/public"));
     app.use("/client", express.static(process.cwd() + "/client"));
     app.use("/script", express.static(process.cwd() + "/script"));
     app.use("/app", express.static(process.cwd() + "/app"));
