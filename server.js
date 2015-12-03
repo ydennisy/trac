@@ -3,6 +3,7 @@
 var express = require("express");
 var http = require('http');
 var url = require('url');
+var path = require('path');
 var morgan   = require('morgan');
 var qs = require("querystring");
 var mongo = require("mongodb").MongoClient;
@@ -15,8 +16,7 @@ mongo.connect("mongodb://localhost:27017/trac", function (err, db){
     else {console.log("mongoDB connected successfully on port 27017"); }
 
     app.use(bodyParser());
-    app.use("/public", express.static(__dirname + "/public"));
-    app.use("/client", express.static(process.cwd() + "/client"));
+    app.use(express.static(path.join(__dirname + "/public")));
     app.use("/script", express.static(process.cwd() + "/script"));
     app.use("/app", express.static(process.cwd() + "/app"));
     app.use(morgan('dev')); // log every request to the console
