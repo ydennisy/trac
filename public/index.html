@@ -2,9 +2,23 @@
 <html>
    <head>
       <title>TRAC UI</title>
+      <link href="http://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">
+      <link href="/public/css/main.css" rel="stylesheet" type="text/css">
    </head>
+   
+   
    <body>
-      <h1>TRAC UI</h1>
-      <button type="submit">Get Data</button>
+      <div class="container">
+         <img src="" />
+         <br />
+         <h1>TRAC UI</h1>
+      </div>
+      <div class="container">
+         <p>There are <span id="count-nbr"></span> records in MongoDB.</p>
+         <br />
+         <button type="submit" id="getCount">Get Data</button>
+      </div>
+      <script type="text/javascript" src="app/controllers/ui.client.js"></script>
    </body>
 </html>
+
