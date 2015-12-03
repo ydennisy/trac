@@ -8,5 +8,24 @@
     "start": "node server.js"
   },
   "author": "Dennis Yurkevich",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "mongodb": "^2.0.49",
+    "underscore": "^1.8.3",
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ydennisy/trac.git"
+  },
+  "keywords": [
+    "client",
+    "detection"
+  ],
+  "bugs": {
+    "url": "https://github.com/ydennisy/trac/issues"
+  },
+  "homepage": "https://github.com/ydennisy/trac#readme"
 }
