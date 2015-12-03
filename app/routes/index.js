@@ -16,7 +16,7 @@ module.exports = function (app, db) {
 
     app.route("/script")
         .get(function(req, res){
-            res.send("<script type='text/javascript' src='https://trac-ydennisy.c9users.io/script/trac.js'></script>");
+            res.send("<script type='text/javascript' src='http://ec2-54-76-141-248.eu-west-1.compute.amazonaws.com/script/trac.js'></script>");
         });
 
     app.route("/api")
