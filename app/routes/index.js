@@ -13,10 +13,12 @@ module.exports = function (app, db) {
         .get(function(req, res){
             res.sendFile(process.cwd() + "/public/index.html");
         });
+        
+        
 
     app.route("/script")
         .get(function(req, res){
-            res.send("<script type='text/javascript' src='http://ec2-54-76-141-248.eu-west-1.compute.amazonaws.com/script/trac.js'></script>");
+            res.send("<script type='text/javascript' src='"+process.cwd()+"/script/trac.js'></script>");
         });
 
     app.route("/api")
