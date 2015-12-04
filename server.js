@@ -22,7 +22,7 @@ mongo.connect("mongodb://localhost:27017/trac", function (err, db){
 
     route(app, db);
 
-    app.listen(80, function(){
+    app.listen(3000, function(){
         console.log("TRAC server listening on port 3000"+ process.cwd());
     });
 
