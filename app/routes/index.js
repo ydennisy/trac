@@ -18,7 +18,7 @@ module.exports = function (app, db) {
 
     app.route("/script")
         .get(function(req, res){
-            res.send("<script type='text/javascript' src='"+req.url+"/script/trac.js'></script>");
+            res.send("<script type='text/javascript' src='"+req.hostname+"/script/trac.js'></script>");
         });
 
     app.route("/api")
