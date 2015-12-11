@@ -10,7 +10,7 @@ var route = require("./app/routes/index.js");
 var app = express();
 var bodyParser = require("body-parser");
 
-mongo.connect("mongodb://localhost:27017/trac", function (err, db){
+mongo.connect("mongodb://root:gR5GIUU9WECJ@/opt/bitnami/mongodb/tmp/mongodb-27017.sock/trac", function (err, db){
     if (err) {throw new Error("Connection to db failed"); }
     else {console.log("mongoDB connected successfully on port 27017"); }
 
@@ -25,5 +25,4 @@ mongo.connect("mongodb://localhost:27017/trac", function (err, db){
     app.listen(3000, function(){
         console.log("TRAC server listening on port 3000"+ process.cwd());
     });
-
 });
