@@ -11,7 +11,7 @@ var bodyParser = require("body-parser");
 var Mongoose = require('mongoose');
 
 var app = express();
-var db = Mongoose.createConnection('mongodb:///opt/bitnami/mongodb/tmp/mongodb-27017.sock/trac');
+var db = Mongoose.createConnection('mongodb://root:gR5GIUU9WECJ@/opt/bitnami/mongodb/tmp/mongodb-27017.sock/trac');
 
     app.use(bodyParser());
     app.use("/public", express.static(process.cwd() + "/public"));
