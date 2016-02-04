@@ -10,7 +10,7 @@ var route = require("./app/routes/index.js");
 var app = express();
 var bodyParser = require("body-parser");
 
-mongo.connect("mongodb://ec2-52-18-3-176.eu-west-1.compute.amazonaws.com:27017/trac", function (err, db){
+mongo.connect("mongodb://localhost:27017/trac", function (err, db){
     if (err) {throw new Error("Connection to db failed"); }
     else {console.log("mongoDB connected successfully on port 27017"); }
 
