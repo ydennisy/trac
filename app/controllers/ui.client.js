@@ -1,7 +1,7 @@
 "use strict";
 
 (function (){
-    var countApiUrl = "http://ec2-54-76-141-248.eu-west-1.compute.amazonaws.com/api/count";
+    var countApiUrl = "api/count";
     var countSpan = document.getElementById("count-nbr");
     var getCountButton = document.getElementById("getCount");
 
