@@ -1,5 +1,3 @@
-document.write("script loaded");
-document.write(document.referrer);
 
 function postStaticData (ts, queryS, cookies, ua, focus, urlloc, scripts){
     var url = "/api";
