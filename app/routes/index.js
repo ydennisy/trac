@@ -6,6 +6,7 @@ module.exports = function (app, db) {
 
     var qs = require("querystring");
     var _ = require("underscore");
+    var fs = require("fs");
 
     var clickHandler = new ClickHandler(db);
 
@@ -14,8 +15,12 @@ module.exports = function (app, db) {
             res.sendFile(process.cwd() + "/public/index.html");
         });
         
+    app.route('/file')
+        .post(function(req, res) {
+            var logger = require('express-logger');
+            app.use(logger({path: "/path/to/logfile.txt"}));
+        })
         
-
     app.route("/script")
         .get(function(req, res){
             res.send("<script type='text/javascript' src='/script/trac.js'></script>");
@@ -23,7 +28,6 @@ module.exports = function (app, db) {
 
     app.route("/api")
         .post(function(req, res){
-
             var str = req.url.split("?")[1];
             console.log(str);
             var parsedQuery = qs.parse(str);
@@ -38,7 +42,6 @@ module.exports = function (app, db) {
             console.log(dataToInsert);
             res.end();
         })
-
         .get(function(req, res){
             console.log("getting data");
             db.collection("imps").find({}).toArray(function(err, result){
@@ -49,4 +52,6 @@ module.exports = function (app, db) {
 
     app.route("/api/count")
         .get(clickHandler.getCount);
+        
+    
 };
