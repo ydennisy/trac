@@ -1,7 +1,7 @@
 (function(){
    function postStaticData (ts, queryS, cookies, ua, focus, urlloc, scripts){
-    var url = "/api";
-    var xhr = new XMLHttpRequest();
+    var url = "http://ec2-52-18-3-176.eu-west-1.compute.amazonaws.com/api";
+    var xhr = new XMLHttpRequest()
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify( {"timestamp": ts, "query": queryS, "cookies": cookies, "ua": ua, "focus": focus, "url": urlloc, "scripts": scripts} ));
