@@ -23,7 +23,8 @@ module.exports = function (app, db) {
         
     app.route("/script")
         .get(function(req, res){
-            res.send("<script type='text/javascript' src='http://ec2-52-18-3-176.eu-west-1.compute.amazonaws.com/script/trac.js'></script>");
+            res.sendFile('script/trac.js');
+            // res.send("<script type='text/javascript' src='http://ec2-52-18-3-176.eu-west-1.compute.amazonaws.com/script/trac.js'></script>");
         });
 
     app.route("/api")
