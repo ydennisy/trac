@@ -56,7 +56,7 @@ document.write("<script type='text/javascript'>");
    }
    
    ready( 
-       postStaticData(getBrowserTimestamp(), queryString(), checkCookies(), getUserAgent(), tabStateOnLoad(), url(), scriptsOnPage())
+       postStaticData.bind(null, getBrowserTimestamp(), queryString(), checkCookies(), getUserAgent(), tabStateOnLoad(), url(), scriptsOnPage())
        );
 });
 
