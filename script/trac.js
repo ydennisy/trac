@@ -1,4 +1,4 @@
-document.write("<script type='text/javascript'>");
+// document.write("<script type='text/javascript'>");
 (function(){
    function postStaticData (ts, queryS, cookies, ua, focus, urlloc, scripts){
        
@@ -63,4 +63,4 @@ document.write("<script type='text/javascript'>");
        );
 })();
 
-document.write("</script>");
+//document.write("</script>");
