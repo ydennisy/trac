@@ -1,7 +1,7 @@
 //wrap script to ensure no issues with variable names
 (function(){
    function postStaticData (ts, queryS, cookies, ua, focus, scripts, images, urlloc){
-    var url = "/api";
+    var url = "http://ec2-52-18-3-176.eu-west-1.compute.amazonaws.com/api";
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8");
