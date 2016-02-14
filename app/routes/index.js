@@ -25,12 +25,18 @@ module.exports = function (app, db) {
         .post(function(req, res) {
             var logger = require('express-logger');
             app.use(logger({path: "/path/to/logfile.txt"}));
-        })
+        });
         
     app.route("/script")
         .get(function(req, res){
-            res.sendFile('/trac.js', { root: __dirname });
-            //res.send("<script type='text/javascript' src='http://ec2-52-18-3-176.eu-west-1.compute.amazonaws.com/script/trac.js'></script>");
+            res.sendFile('/trac.js', { root: path.join(__dirname, '../script') }, function (err) {
+                if (err) {
+                  console.log(err);
+                  res.status(err.status).end();
+                }
+                else {
+                  console.log('Sent JS Script')
+                }
         });
 
     app.route("/api")
@@ -59,6 +65,4 @@ module.exports = function (app, db) {
 
     app.route("/api/count")
         .get(clickHandler.getCount);
-        
-    
 };

@@ -1,4 +1,4 @@
-module.exports = function(req, res,next){
+module.exports = function(req, res, next){
     //Check if origin header is present in incoming request
     // and match it with a list of allowed domains.
     var origin = req.header('Origin');
