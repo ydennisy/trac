@@ -58,7 +58,8 @@
     };
     
     var wordCount = function(){
-        return (document.body.innerHTML.length);
+        var words = document.getElementsByTagName('body')[0].innerHTML.replace(/( | )/,' ').replace(/[\n\r]/g, ' ').replace(/<.*?>/g, ' ');
+        return words.match(/\S+/g).length;
     };
     
     // check to see if function is being passed, then check to see if page in loaded if not set event handler
