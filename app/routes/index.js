@@ -35,8 +35,9 @@ module.exports = function (app, db) {
                   res.status(err.status).end();
                 }
                 else {
-                  console.log('Sent JS Script')
+                  console.log('Sent JS Script');
                 }
+            }
         });
 
     app.route("/api")
