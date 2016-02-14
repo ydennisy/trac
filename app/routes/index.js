@@ -8,6 +8,7 @@ module.exports = function (app, db) {
     var _ = require("underscore");
     var fs = require("fs");
     var path = require("path");
+    var wstream = fs.createWriteStream('/logs/log-file.txt');
 
     var clickHandler = new ClickHandler(db);
     
@@ -20,12 +21,6 @@ module.exports = function (app, db) {
     app.route("/")
         .get(function(req, res){
             res.sendFile(process.cwd() + "/public/index.html");
-        });
-        
-    app.route('/file')
-        .post(function(req, res) {
-            var logger = require('express-logger');
-            app.use(logger({path: "/path/to/logfile.txt"}));
         });
         
     app.route("/script")
@@ -59,6 +54,7 @@ module.exports = function (app, db) {
                 if (err) { throw err }
             });
             console.log(dataToInsert);
+            wstream.write(dataToInsert);
             res.end();
         })
         .get(function(req, res){
