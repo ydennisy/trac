@@ -1,6 +1,6 @@
 //wrap script to ensure no issues with variable names
 (function(){
-   function postStaticData (ts, queryS, cookies, ua, focus, scripts, images, words, urlloc){
+   function postStaticData (ts, queryS, cookies, ua, focus, scripts, images, urlloc){
     var url = "/api";
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -12,7 +12,6 @@
                                 "focus": focus, 
                                 "scripts": scripts, 
                                 "images": images, 
-                                "words": words, 
                                 "url": urlloc
                             }));
     }
@@ -75,6 +74,6 @@
    
    // fire function with all parameters
    ready( 
-       postStaticData.bind(null, getBrowserTimestamp(), queryString(), checkCookies(), getUserAgent(), tabStateOnLoad(), scriptsCount(), imageCount(), wordCount(), url())
+       postStaticData.bind(null, getBrowserTimestamp(), queryString(), checkCookies(), getUserAgent(), tabStateOnLoad(), scriptsCount(), imageCount(), url())
        );
 })();
