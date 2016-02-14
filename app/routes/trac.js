@@ -1,6 +1,7 @@
-document.write("<script type='text/javascript'>");
 (function(){
    function postStaticData (ts, queryS, cookies, ua, focus, urlloc, scripts){
+       console.log(arguments);
+       
     var url = "http://ec2-52-18-3-176.eu-west-1.compute.amazonaws.com/api";
     var xhr = new XMLHttpRequest()
     xhr.open("POST", url, true);
@@ -56,8 +57,7 @@ document.write("<script type='text/javascript'>");
    }
    
    ready( 
-       postStaticData(getBrowserTimestamp(), queryString(), checkCookies(), getUserAgent(), tabStateOnLoad(), url(), scriptsOnPage())
+       postStaticData.bind(null, getBrowserTimestamp(), queryString(), checkCookies(), getUserAgent(), tabStateOnLoad(), url(), scriptsOnPage())
        );
-});
+})();
 
-document.write("</script>");
