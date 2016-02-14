@@ -5,7 +5,16 @@
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify( {"timestamp": ts, "query": queryS, "cookies": cookies, "ua": ua, "focus": focus, "scripts": scripts, "images": images, "words": words, "url": urlloc} ));
+    xhr.send(JSON.stringify({   "timestamp": ts, 
+                                "query": queryS, 
+                                "cookies": cookies, 
+                                "ua": ua, 
+                                "focus": focus, 
+                                "scripts": scripts, 
+                                "images": images, 
+                                "words": words, 
+                                "url": urlloc
+                            }));
     }
     
     var getBrowserTimestamp = function(){
