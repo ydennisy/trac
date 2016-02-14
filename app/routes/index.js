@@ -30,7 +30,7 @@ module.exports = function (app, db) {
         
     app.route("/script")
         .get(function(req, res){
-            res.sendFile('/trac.js', { root: path.join(__dirname, '../script') });
+            res.sendFile('/trac.js', { root: path.join(__dirname, '../../script') });
        });
 
     app.route("/api")
