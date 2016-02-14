@@ -42,7 +42,7 @@ module.exports = function (app, db) {
      
     app.route("/script-test")
         .get(function(req, res){
-            res.send('<script type="text/javascript" src=" '+process.cwd()+' "/script/trac.js"/>');
+            res.send('<script type="text/javascript" src=" '+process.cwd()+' "/script/trac.js"></script>');
     });
 
     app.route("/api")
