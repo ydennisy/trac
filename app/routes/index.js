@@ -7,6 +7,7 @@ module.exports = function (app, db) {
     var qs = require("querystring");
     var _ = require("underscore");
     var fs = require("fs");
+    var path = require("path");
 
     var clickHandler = new ClickHandler(db);
     
@@ -29,16 +30,8 @@ module.exports = function (app, db) {
         
     app.route("/script")
         .get(function(req, res){
-            res.sendFile('/trac.js', { root: path.join(__dirname, '../script') }, function (err) {
-                if (err) {
-                  console.log(err);
-                  res.status(err.status).end();
-                }
-                else {
-                  console.log('Sent JS Script');
-                }
-            }
-        });
+            res.sendFile('/trac.js', { root: path.join(__dirname, '../script') });
+       });
 
     app.route("/api")
         .post(function(req, res){
