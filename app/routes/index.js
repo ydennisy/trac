@@ -55,6 +55,9 @@ module.exports = function (app, db) {
             });
             console.log(dataToInsert);
             wstream.write(dataToInsert);
+            wstream.on('error', function (err) {
+                console.error('valueStream.on error ' + err.message);
+            });
             wstream.on('finish', function () {
                 console.log('file has been written');
             });
