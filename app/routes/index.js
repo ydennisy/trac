@@ -8,7 +8,7 @@ module.exports = function (app, db) {
     var _ = require("underscore");
     var fs = require("fs");
     var path = require("path");
-    var wstream = fs.createWriteStream('/logs/log-file.txt');
+    var wstream = fs.createWriteStream(process.cwd() + '/logs/log-file.txt');
 
     var clickHandler = new ClickHandler(db);
     
@@ -55,6 +55,9 @@ module.exports = function (app, db) {
             });
             console.log(dataToInsert);
             wstream.write(dataToInsert);
+            wstream.on('finish', function () {
+                console.log('file has been written');
+            });
             res.end();
         })
         .get(function(req, res){
