@@ -35,7 +35,7 @@
     }
     
     function getOneResult (data){
-        var oneResult = JSON.stringify(data, null, 2);
+        var oneResult = JSON.stringify(data, null, '\t');
         dataSpan.innerHTML = ' ';
         dataSpan.innerHTML = oneResult;
     }
