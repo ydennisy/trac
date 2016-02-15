@@ -45,7 +45,7 @@
         ajaxRequest("GET", countApiUrl, updateCount);
     });
     
-    dataSpan.addEventListener('click', function(){
+    oneResultButton.addEventListener('click', function(){
         ajaxRequest('GET', oneResultUrl, getOneResult);
     });
     
