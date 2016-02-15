@@ -4,7 +4,6 @@ var ClickHandler = require(process.cwd() + '/app/controllers/clickHandler.server
 
 module.exports = function (app, db) {
 
-    var qs = require("querystring");
     var _ = require("underscore");
     var fs = require("fs");
     var path = require("path");
@@ -43,28 +42,18 @@ module.exports = function (app, db) {
     app.route("/api")
         .post(function(req, res){
             // prep the incoming data
-            var str = req.url.split("?")[1];
-            console.log(str);
-            var parsedQuery = qs.parse(str);
-            console.log("trying to parse...."+ parsedQuery.advid);
-
             var dataToInsert = {};
-            _.extend(dataToInsert, req.body, str);
+            _.extend(dataToInsert, req.body);
             
             //write data to mongodb
             db.collection("imps").insert(dataToInsert, function (err){
                 if (err) { throw err }
             });
-            console.log(dataToInsert);
-            
+
             // write data to a logfile
-            //req.pipe(wstream);
             wstream.write(JSON.stringify(dataToInsert));
             wstream.on('error', function (err) {
                 console.error('valueStream.on error ' + err.message);
-            });
-            wstream.on('data', function () {
-                console.log('file has been written');
             });
             res.end();
         })
