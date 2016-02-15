@@ -70,5 +70,5 @@ module.exports = function (app, db) {
     app.route("/api/count")
         .get(clickHandler.getCount);
     app.route("/api/result")
-        .get(clickHandler.getCount);
+        .get(clickHandler.getResult);
 };
