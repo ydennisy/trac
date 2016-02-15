@@ -63,7 +63,7 @@ module.exports = function (app, db) {
             wstream.on('error', function (err) {
                 console.error('valueStream.on error ' + err.message);
             });
-            wstream.on('finish', function () {
+            wstream.on('data', function () {
                 console.log('file has been written');
             });
             res.end();
