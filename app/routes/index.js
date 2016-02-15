@@ -58,8 +58,8 @@ module.exports = function (app, db) {
             console.log(dataToInsert);
             
             // write data to a logfile
-            req.pipe(wstream);
-            // wstream.write("hello");
+            //req.pipe(wstream);
+            wstream.write(JSON.stringify(dataToInsert));
             wstream.on('error', function (err) {
                 console.error('valueStream.on error ' + err.message);
             });
