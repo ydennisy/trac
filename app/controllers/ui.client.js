@@ -35,7 +35,7 @@
     }
     
     function getOneResult (data){
-        var oneResult = JSON.parse(data);
+        var oneResult = JSON.stringify(data);
         dataSpan.innerHTML = oneResult;
     }
     
