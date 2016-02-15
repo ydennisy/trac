@@ -13,6 +13,15 @@ function clickHandler (db) {
             res.json(result);
         });
     };
+    
+    this.getResult = function (req, res){
+        imps.findOne({}, function(err, result){
+            if (err) {
+                throw err;
+            }
+            res.json(result);
+        });
+    };
 
 
 }

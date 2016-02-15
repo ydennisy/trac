@@ -2,8 +2,11 @@
 
 (function (){
     var countApiUrl = "api/count";
+    var oneResultUrl = 'api/result';
     var countSpan = document.getElementById("count-nbr");
     var getCountButton = document.getElementById("getCount");
+    var dataSpan = document.getElementById('data-span');
+    var oneResultButton = document.getElementById('get-one-result');
 
     function ready (fn) {
         if (typeof fn !== "function"){
@@ -31,9 +34,19 @@
         countSpan.innerHTML = impsCount;
     }
     
+    function getOneResult (data){
+        var oneResult = JSON.parse(data);
+        dataSpan.innerHTML = oneResult;
+    }
+    
     ready(ajaxRequest("GET", countApiUrl, updateCount));
     
     getCountButton.addEventListener("click", function(){
         ajaxRequest("GET", countApiUrl, updateCount);
-    })
+    });
+    
+    dataSpan.addEventListener('click', function(){
+        ajaxRequest('GET', oneResultUrl, getOneResult);
+    });
+    
 })();
