@@ -42,6 +42,7 @@ module.exports = function (app, db) {
 
     app.route("/api")
         .post(function(req, res){
+            // prep the incoming data
             var str = req.url.split("?")[1];
             console.log(str);
             var parsedQuery = qs.parse(str);
@@ -49,12 +50,15 @@ module.exports = function (app, db) {
 
             var dataToInsert = {};
             _.extend(dataToInsert, req.body, str);
-
+            
+            //write data to mongodb
             db.collection("imps").insert(dataToInsert, function (err){
                 if (err) { throw err }
             });
             console.log(dataToInsert);
-            wstream.write(dataToInsert);
+            
+            // write data to a logfile
+            wstream.write("hello");
             wstream.on('error', function (err) {
                 console.error('valueStream.on error ' + err.message);
             });
