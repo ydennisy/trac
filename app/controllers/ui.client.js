@@ -36,6 +36,7 @@
     
     function getOneResult (data){
         var oneResult = JSON.stringify(data);
+        dataSpan.innerHTML = ' ';
         dataSpan.innerHTML = oneResult;
     }
     
